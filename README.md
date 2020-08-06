@@ -17,5 +17,6 @@ Checks out a specific shoe in a specific size with a given URL.
   - <code> pip install requests</code>
 4. Download the appropriate [ChromeDriver](https://chromedriver.chromium.org/)
 5. Change variables in main.py
-6. run main.py
+6. run script
+  - <code> main.py <code> or <code>python main.py</code>
 
