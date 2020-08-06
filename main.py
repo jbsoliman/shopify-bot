@@ -4,6 +4,11 @@ import time
 from selenium import webdriver 
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
+
 
 
 #TODO
@@ -46,7 +51,7 @@ def buyProduct():
     #time.sleep(.1)
     #clicks a size
     driver.find_element_by_xpath(f'//label[@data-value="{size}"]').click()
-    #time.sleep(.1)
+    time.sleep(.1)
 
     #clicks add to cart
     driver.find_element_by_xpath('//button[@id="AddToCart"]').click()
@@ -59,8 +64,9 @@ def buyProduct():
     checkout = driver.find_element_by_xpath('//input[@name="checkout"]')
     driver.execute_script("arguments[0].click();", checkout)
     
-    #wait for page to load (LOOK INTO OPTIMIZING THIS)
-    time.sleep(3)
+    
+    #wait for page to load (should be optimized)
+    WebDriverWait(driver, 6).until(EC.visibility_of_element_located((By.XPATH,'//input[@placeholder="Email"]')))
 
     #enter email
     driver.find_element_by_xpath('//input[@placeholder="Email"]').send_keys(email_input)
@@ -87,16 +93,16 @@ def buyProduct():
     #click "continue to shipping"
     driver.find_element_by_xpath('//button[@id="continue_button"]').click()
     
-    #wait for page to load (LOOK INTO OPTIMIZING THIS)
-    time.sleep(3)
+    #wait for page to load (should be optimized)
+    WebDriverWait(driver, 6).until(EC.visibility_of_element_located((By.XPATH,'//input[@aria-label="Canada Post Expedited (2-7 Business Days). $15.00"]')))
     #click "Canada Post Expedited" shipping option
     driver.find_element_by_xpath('//input[@aria-label="Canada Post Expedited (2-7 Business Days). $15.00"]').click()
 
     #click "Continue to Payment" 
     driver.find_element_by_xpath('//button[@id="continue_button"]').click()
     
-    #wait for page to load (LOOK INTO OPTIMIZING THIS)
-    time.sleep(4)
+    #wait for page to load (should be optimized now)
+    WebDriverWait(driver, 6).until(EC.visibility_of_element_located((By.XPATH,'//input[@data-trekkie-id="same_billing_address_field"]')))
 
 
     #switch to iframe for Payment info

@@ -23,3 +23,7 @@ Checks out a specific shoe in a specific size with a given URL.
 ## TO-DO
 - Optimize Checkout Time
 - Build URL Reader/feeder for new release
+
+
+## Changes Made
+- Improved checkout time by using WebDriverWait instead of sleeping 
