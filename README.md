@@ -20,6 +20,6 @@ Checks out a specific shoe in a specific size with a given URL.
 6. run script
   - <code> main.py <code> or <code>python main.py</code>
 
-##TO-DO
+## TO-DO
 - Optimize Checkout Time
 - Build URL Reader/feeder for new release
