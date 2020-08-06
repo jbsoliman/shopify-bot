@@ -14,7 +14,7 @@ Checks out a specific shoe in a specific size with a given URL.
 2. Clone repo/download .zip 
 3. Install the required packages in PIP:
   - <code> pip install selenium </code>
-  - <code> pip install </code>
+  - <code> pip install requests</code>
 4. Download the appropriate [ChromeDriver](https://chromedriver.chromium.org/)
 5. Change variables in main.py
 6. run main.py
