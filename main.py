@@ -7,7 +7,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 #TODO
-# FIGURE OUT HOW TO SEND KEYS IN PAYMENT
 # OPTIMIZE CHECKOUT FOR TIME
 # FIGURE OUT URL RETRIEVER FOR JJJJOUND NB'S 
 
@@ -25,7 +24,11 @@ address_input = '743 Miller Ave'
 city_input = 'Coquitlam'
 zip_input = 'V3J 4K4'
 phone_input = '6044403329'
-card_input_1 = ''
+card_input_1 = '3400'
+card_input_2 = '000000'
+card_input_3 = '00009'
+
+
 
 def buyProduct():
     driver = webdriver.Chrome(executable_path=chromeDriverPath)
@@ -100,9 +103,9 @@ def buyProduct():
     driver.switch_to.frame(driver.find_elements_by_tag_name("iframe")[0])
     #enter card Number (CHANGE VALUES BEFORE LIVE)
     payment = driver.find_element_by_xpath('//input[@id="number"]')
-    payment.send_keys('3400')
-    payment.send_keys('000000')
-    payment.send_keys('00009')
+    payment.send_keys(card_input_1)
+    payment.send_keys(card_input_2)
+    payment.send_keys(card_input_3)
 
     #CHANGE VALUES BEFORE LIVE
     actions = ActionChains(driver)

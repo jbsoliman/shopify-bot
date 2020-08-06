@@ -1,10 +1,13 @@
 ## shopify-bot 
 
 ** WORK IN PROGRESS **
+
 Uses Python 3/Selenium Web Driver 
 
 ## What This Bot Can Do
 Checks out a specific shoe in a specific size with a given URL.
+
+**Currently only works for Amex cards only
 
 ## Setup
 1. Install Python 3
