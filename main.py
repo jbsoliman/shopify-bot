@@ -51,11 +51,11 @@ def buyProduct():
     #time.sleep(.1)
     #clicks a size
     driver.find_element_by_xpath(f'//label[@data-value="{size}"]').click()
-    time.sleep(.1)
+    #time.sleep(.2)
 
     #clicks add to cart
     driver.find_element_by_xpath('//button[@id="AddToCart"]').click()
-    time.sleep(.1)
+    time.sleep(.2)
 
     #navigates to check out
     driver.get('https://shop.havenshop.com/cart')
@@ -115,9 +115,11 @@ def buyProduct():
 
     #CHANGE VALUES BEFORE LIVE
     actions = ActionChains(driver)
-    actions.send_keys(Keys.TAB  + 'Jason Soliman' + Keys.TAB + ' 12 21' + Keys.TAB + ' 1234' + Keys.ENTER)
-    #DO NOT ACTIVATE BELOW LINE UNTIL YOU REALLY READY
-    #actions.perform()
+    actions.send_keys(Keys.TAB  + 'Jason Soliman' + Keys.TAB + ' 12 21' + Keys.TAB + ' 1234')
+    #actions.send_keys(Keys.TAB  + 'Jason Soliman' + Keys.TAB + ' 12 21' + Keys.TAB + ' 1234' + Keys.ENTER)
+
+    #DO NOT ACTIVATE ABOVE LINE UNTIL YOU REALLY READY
+    actions.perform()
     
     
     #!!!!!!!!!!!!click Pay Now DONT DACTUALLY DO THISSSSSSSS!!!!!!!!!!!!!!!!
