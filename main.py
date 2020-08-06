@@ -12,9 +12,23 @@ from selenium.webdriver.common.action_chains import ActionChains
 # FIGURE OUT URL RETRIEVER FOR JJJJOUND NB'S 
 
 
+
+
+#CHANGE VARIABLES WHEN NEEDED
 producturl = 'https://shop.havenshop.com/collections/footwear/products/nike-killshot-og-sp-sail-gym-red'
+chromeDriverPath = r'C:\Users\Jason\Desktop\chromedriver.exe'
+size = '10.5US'
+email_input = 'jsolimaan@gmail.com'
+first_name_input = 'Jason'
+last_name_input = 'Soliman'
+address_input = '743 Miller Ave'
+city_input = 'Coquitlam'
+zip_input = 'V3J 4K4'
+phone_input = '6044403329'
+card_input_1 = ''
+
 def buyProduct():
-    driver = webdriver.Chrome(executable_path=r'C:\Users\Jason\Desktop\chromedriver.exe')
+    driver = webdriver.Chrome(executable_path=chromeDriverPath)
     
 
 
@@ -28,7 +42,7 @@ def buyProduct():
     #time.sleep(.5)
     #time.sleep(.1)
     #clicks a size
-    driver.find_element_by_xpath('//label[@data-value="10.5US"]').click()
+    driver.find_element_by_xpath(f'//label[@data-value="{size}"]').click()
     #time.sleep(.1)
 
     #clicks add to cart
@@ -46,26 +60,26 @@ def buyProduct():
     time.sleep(3)
 
     #enter email
-    driver.find_element_by_xpath('//input[@placeholder="Email"]').send_keys('jsolimaan@gmail.com')
+    driver.find_element_by_xpath('//input[@placeholder="Email"]').send_keys(email_input)
 
     #enter First Name
-    driver.find_element_by_xpath('//input[@data-autocomplete-field="first_name"]').send_keys('Jason')
+    driver.find_element_by_xpath('//input[@data-autocomplete-field="first_name"]').send_keys(first_name_input)
 
     #enter Last Name
-    driver.find_element_by_xpath('//input[@data-autocomplete-field="last_name"]').send_keys('Soliman')
+    driver.find_element_by_xpath('//input[@data-autocomplete-field="last_name"]').send_keys(last_name_input)
 
     time.sleep(.1)
     #enter Address
-    driver.find_element_by_xpath('//input[@data-autocomplete-field="address1"]').send_keys('743 Miller Ave')
+    driver.find_element_by_xpath('//input[@data-autocomplete-field="address1"]').send_keys(address_input)
 
     #enter City
-    driver.find_element_by_xpath('//input[@data-autocomplete-field="city"]').send_keys('Coquitlam')
+    driver.find_element_by_xpath('//input[@data-autocomplete-field="city"]').send_keys(city_input)
 
     #enter Postal Code
-    driver.find_element_by_xpath('//input[@data-autocomplete-field="zip"]').send_keys('V3J 4K4')
+    driver.find_element_by_xpath('//input[@data-autocomplete-field="zip"]').send_keys(zip_input)
 
     #enter Phone
-    driver.find_element_by_xpath('//input[@data-autocomplete-field="phone"]').send_keys('6044403329')
+    driver.find_element_by_xpath('//input[@data-autocomplete-field="phone"]').send_keys(phone_input)
 
     #click "continue to shipping"
     driver.find_element_by_xpath('//button[@id="continue_button"]').click()
