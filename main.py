@@ -32,16 +32,41 @@ phone_input = '6044403329'
 card_input_1 = '3400'
 card_input_2 = '000000'
 card_input_3 = '00009'
+product_url = ''
+
+def fetchURL(driver):
+    driver.get('https://shop.havenshop.com/collections/new-arrivals')
+    file1 = open("MyFile.txt","w") 
+    elems =  driver.find_elements_by_xpath('//section[@id="shop-products"]/a[@href]')
+    count = 0
+    for elem in elems:
+        href = elem.get_attribute('href')
+        
+        if href is not None and 'adidas' in href:
+            file1.write(href + '\n')
+            i = '[' + str(count) + '] '
+            print(i + href) 
+        count += 1
+            
+
+    while True:
+        try:
+            index_of_product = int(input("Enter Index of desired Product: \n"))
+        except ValueError:
+            print("Please enter a proper integer")
+            continue
+        else:
+            break
+
+    new_product_url = elems[index_of_product].get_attribute('href')
+    file1.close() 
+    return (new_product_url)
 
 
-
-def buyProduct():
-    driver = webdriver.Chrome(executable_path=chromeDriverPath)
+def buyProduct(driver,product_url):
     
-
-
     #navigates to product URL
-    driver.get(producturl)
+    driver.get(product_url)
     
     #time.sleep(2)
 
@@ -55,7 +80,7 @@ def buyProduct():
 
     #clicks add to cart
     driver.find_element_by_xpath('//button[@id="AddToCart"]').click()
-    time.sleep(.2)
+    time.sleep(.3)
 
     #navigates to check out
     driver.get('https://shop.havenshop.com/cart')
@@ -99,6 +124,8 @@ def buyProduct():
     driver.find_element_by_xpath('//input[@aria-label="Canada Post Expedited (2-7 Business Days). $15.00"]').click()
 
     #click "Continue to Payment" 
+    WebDriverWait(driver, 6).until(EC.visibility_of_element_located((By.XPATH,'//button[@id="continue_button"]')))
+
     driver.find_element_by_xpath('//button[@id="continue_button"]').click()
     
     #wait for page to load (should be optimized now)
@@ -115,19 +142,32 @@ def buyProduct():
 
     #CHANGE VALUES BEFORE LIVE
     actions = ActionChains(driver)
-    actions.send_keys(Keys.TAB  + 'Jason Soliman' + Keys.TAB + ' 12 21' + Keys.TAB + ' 1234')
-    #actions.send_keys(Keys.TAB  + 'Jason Soliman' + Keys.TAB + ' 12 21' + Keys.TAB + ' 1234' + Keys.ENTER)
+    actions.send_keys(Keys.TAB)  
+    actions.pause(.1)
+    actions.send_keys('Jason Soliman') 
+    actions.send_keys(Keys.TAB)
+    actions.pause(.1)
+
+    actions.send_keys('1221')
+    actions.send_keys(Keys.TAB)
+    actions.pause(.15)
+   
+    actions.send_keys('1234')
+    
+ 
+    
+    
+    #actions.send_keys(Keys.ENTER)
 
     #DO NOT ACTIVATE ABOVE LINE UNTIL YOU REALLY READY
     actions.perform()
     
     
-    #!!!!!!!!!!!!click Pay Now DONT DACTUALLY DO THISSSSSSSS!!!!!!!!!!!!!!!!
-
     time.sleep(1000)
 
 def main():
-    buyProduct()
+    driver = webdriver.Chrome(executable_path=chromeDriverPath)
+    buyProduct(driver,fetchURL(driver))
 
 
 if __name__ == "__main__":

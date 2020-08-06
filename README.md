@@ -27,3 +27,4 @@ Checks out a specific shoe in a specific size with a given URL.
 
 ## Changes Made
 - Improved checkout time by using WebDriverWait instead of sleeping 
+- Checks through new arrivals for products of a certain brand (given by user)
