@@ -33,6 +33,7 @@ card_input_1 = '3400'
 card_input_2 = '000000'
 card_input_3 = '00009'
 product_url = ''
+product_filter = 'nike'
 
 def fetchURL(driver):
     driver.get('https://shop.havenshop.com/collections/new-arrivals')
@@ -42,7 +43,7 @@ def fetchURL(driver):
     for elem in elems:
         href = elem.get_attribute('href')
         
-        if href is not None and 'adidas' in href:
+        if href is not None and product_filter in href:
             file1.write(href + '\n')
             i = '[' + str(count) + '] '
             print(i + href) 
@@ -57,7 +58,7 @@ def fetchURL(driver):
             continue
         else:
             break
-
+    
     new_product_url = elems[index_of_product].get_attribute('href')
     file1.close() 
     return (new_product_url)
@@ -148,11 +149,11 @@ def buyProduct(driver,product_url):
     actions.send_keys(Keys.TAB)
     actions.pause(.1)
 
-    actions.send_keys('1221')
+    actions.send_keys(' 1221')
     actions.send_keys(Keys.TAB)
-    actions.pause(.15)
+    actions.pause(.2)
    
-    actions.send_keys('1234')
+    actions.send_keys(' 1234')
     
  
     
