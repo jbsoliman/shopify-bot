@@ -20,7 +20,7 @@ from selenium.webdriver.common.by import By
 
 #CHANGE VARIABLES WHEN NEEDED
 producturl = 'https://shop.havenshop.com/collections/footwear/products/nike-killshot-og-sp-sail-gym-red'
-chromeDriverPath = r'C:\Users\Jason\Desktop\chromedriver.exe'
+chromeDriverPath = r'C:\Users\Peter\Desktop\chromedriver.exe'
 size = '10.5US'
 email_input = 'petersherman@google.com'
 first_name_input = 'P'
@@ -145,7 +145,7 @@ def buyProduct(driver,product_url):
     actions = ActionChains(driver)
     actions.send_keys(Keys.TAB)  
     actions.pause(.1)
-    actions.send_keys('Jason Soliman') 
+    actions.send_keys('Peter Sherman') 
     actions.send_keys(Keys.TAB)
     actions.pause(.1)
 
